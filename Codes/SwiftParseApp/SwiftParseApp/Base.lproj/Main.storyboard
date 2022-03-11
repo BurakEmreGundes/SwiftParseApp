@@ -296,7 +296,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6KP-nf-piO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d3z-Ad-mB7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="d3z-Ad-mB7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="17S-sT-ZTb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DBN-0l-t1k">
