@@ -13,6 +13,9 @@
 		4A72934B27DB6593006D7D6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A72934927DB6593006D7D6F /* Main.storyboard */; };
 		4A72934D27DB6595006D7D6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A72934C27DB6595006D7D6F /* Assets.xcassets */; };
 		4A72935027DB6595006D7D6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A72934E27DB6595006D7D6F /* LaunchScreen.storyboard */; };
+		4A72935827DB6FC7006D7D6F /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72935727DB6FC7006D7D6F /* PlacesViewController.swift */; };
+		4A72935A27DB7006006D7D6F /* AddPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72935927DB7006006D7D6F /* AddPlacesViewController.swift */; };
+		4A72935C27DB73C6006D7D6F /* selectimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A72935B27DB73C6006D7D6F /* selectimage.png */; };
 		EBD0473417E6E5F7FE4A6365 /* Pods_SwiftParseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3E4FA71D4825335649A7FE /* Pods_SwiftParseApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +29,9 @@
 		4A72934C27DB6595006D7D6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A72934F27DB6595006D7D6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A72935127DB6595006D7D6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A72935727DB6FC7006D7D6F /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		4A72935927DB7006006D7D6F /* AddPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlacesViewController.swift; sourceTree = "<group>"; };
+		4A72935B27DB73C6006D7D6F /* selectimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectimage.png; sourceTree = "<group>"; };
 		57E3D3F02A5876161D2F02A4 /* Pods-SwiftParseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftParseApp.debug.xcconfig"; path = "Target Support Files/Pods-SwiftParseApp/Pods-SwiftParseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3E4FA71D4825335649A7FE /* Pods_SwiftParseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftParseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -48,7 +54,6 @@
 				57E3D3F02A5876161D2F02A4 /* Pods-SwiftParseApp.debug.xcconfig */,
 				2C4409D2C2BA2D2924BF26C6 /* Pods-SwiftParseApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -78,8 +83,11 @@
 				4A72934727DB6593006D7D6F /* ViewController.swift */,
 				4A72934927DB6593006D7D6F /* Main.storyboard */,
 				4A72934C27DB6595006D7D6F /* Assets.xcassets */,
+				4A72935B27DB73C6006D7D6F /* selectimage.png */,
 				4A72934E27DB6595006D7D6F /* LaunchScreen.storyboard */,
 				4A72935127DB6595006D7D6F /* Info.plist */,
+				4A72935727DB6FC7006D7D6F /* PlacesViewController.swift */,
+				4A72935927DB7006006D7D6F /* AddPlacesViewController.swift */,
 			);
 			path = SwiftParseApp;
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A72935027DB6595006D7D6F /* LaunchScreen.storyboard in Resources */,
+				4A72935C27DB73C6006D7D6F /* selectimage.png in Resources */,
 				4A72934D27DB6595006D7D6F /* Assets.xcassets in Resources */,
 				4A72934B27DB6593006D7D6F /* Main.storyboard in Resources */,
 			);
@@ -207,6 +216,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A72935A27DB7006006D7D6F /* AddPlacesViewController.swift in Sources */,
+				4A72935827DB6FC7006D7D6F /* PlacesViewController.swift in Sources */,
 				4A72934827DB6593006D7D6F /* ViewController.swift in Sources */,
 				4A72934427DB6593006D7D6F /* AppDelegate.swift in Sources */,
 				4A72934627DB6593006D7D6F /* SceneDelegate.swift in Sources */,
