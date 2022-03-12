@@ -297,6 +297,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bdo-WJ-aNT"/>
+                    <connections>
+                        <outlet property="mapView" destination="ghU-Bz-l79" id="vP0-L0-Ovs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0hu-IE-3KY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

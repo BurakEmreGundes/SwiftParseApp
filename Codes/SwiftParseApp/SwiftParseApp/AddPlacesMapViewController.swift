@@ -6,13 +6,24 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class AddPlacesMapViewController: UIViewController {
+class AddPlacesMapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
+    var locationManager = CLLocationManager()
+    @IBOutlet weak var mapView: MKMapView!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        locationManager.delegate=self
+        mapView.delegate=self
+        locationManager.desiredAccuracy=kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
         
         navigationController?.navigationBar.topItem?.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButtonClicked))
@@ -20,6 +31,14 @@ class AddPlacesMapViewController: UIViewController {
         navigationController?.navigationBar.topItem?.leftBarButtonItem=UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backClicked))
         
         
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+        let span=MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
     }
     
     @objc func addButtonClicked(){
