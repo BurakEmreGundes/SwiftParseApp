@@ -73,6 +73,7 @@
                             <constraint firstItem="4nC-oG-7tY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="wtm-wd-osM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sw6-GZ-vFb"/>
                     <connections>
                         <outlet property="emailTextField" destination="4uX-SB-tGk" id="PMr-Vk-stW"/>
                         <outlet property="passwordTextField" destination="L6b-rB-LLw" id="hfd-CK-FgY"/>
@@ -110,6 +111,7 @@
                         <outlet property="tableView" destination="sHA-x6-ZUm" id="4yt-SK-fse"/>
                         <segue destination="UJ2-qj-y36" kind="show" identifier="toAddPlacesVC" id="ouO-fJ-eLW"/>
                         <segue destination="M3w-52-dfv" kind="show" identifier="toPlacesDetailsVC" id="eoW-6K-1vY"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLogoutVC" modalPresentationStyle="fullScreen" id="Hle-zd-Ami"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gB-ps-kXv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -155,6 +157,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Places"/>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="UJ2-qj-y36" eventType="touchUpInside" id="4pk-2j-LRd"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="wvL-eO-kyD">
                                 <rect key="frame" x="73" y="382" width="268" height="279"/>
@@ -187,7 +192,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="YRZ-fB-Gf1"/>
                     <connections>
-                        <segue destination="0AN-EG-iQG" kind="show" identifier="toAddPlacesMapVC" id="02y-9A-9CK"/>
+                        <outlet property="placeAtmosphere" destination="p0L-Rb-A4m" id="GIN-EG-aPh"/>
+                        <outlet property="placeImage" destination="wvL-eO-kyD" id="5dv-nH-wC4"/>
+                        <outlet property="placeNameTextField" destination="6Rz-aa-nve" id="h7p-u6-Q0A"/>
+                        <outlet property="placeTypeTextField" destination="COm-ob-NQJ" id="ELc-fi-rFQ"/>
+                        <segue destination="T40-Nd-WjO" kind="presentation" identifier="toAddPlacesMapVC" modalPresentationStyle="fullScreen" id="02y-9A-9CK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jM-Dw-iKV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -291,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0hu-IE-3KY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3652" y="86"/>
+            <point key="canvasLocation" x="4560.8695652173919" y="85.714285714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6KP-nf-piO">
@@ -311,6 +320,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qb5-Pq-7or" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="880" y="86"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lR9-2T-eEq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T40-Nd-WjO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="a4Q-xA-PvL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ho5-SF-T4m">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0AN-EG-iQG" kind="relationship" relationship="rootViewController" id="hi6-vQ-5qm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bbY-3O-Yzx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3650.7246376811595" y="85.714285714285708"/>
         </scene>
     </scenes>
     <resources>

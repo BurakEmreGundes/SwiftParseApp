@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class PlacesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
    
@@ -20,6 +21,10 @@ class PlacesViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.dataSource=self
         
         navigationController?.navigationBar.topItem?.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButtonClicked))
+        
+        navigationController?.navigationBar.topItem?.leftBarButtonItem=UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutClicked))
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,11 +37,27 @@ class PlacesViewController: UIViewController,UITableViewDelegate,UITableViewData
         return 10
     }
     
-    
-    
-    
-    
     @objc func addButtonClicked(){
+        self.performSegue(withIdentifier: "toAddPlacesVC", sender: nil)
+    }
+    
+    @objc func logoutClicked(){
+        
+        PFUser.logOutInBackground { error in
+            if error != nil{
+                self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Hatalı İşlem")
+            }else{
+                self.performSegue(withIdentifier: "toLogoutVC", sender: nil)
+            }
+        }
+        
+    }
+    
+    func makeAlert(title:String,message:String){
+        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okButton=UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert,animated: true,completion: nil)
         
     }
     

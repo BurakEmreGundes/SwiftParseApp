@@ -13,6 +13,21 @@ class AddPlacesMapViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        navigationController?.navigationBar.topItem?.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButtonClicked))
+        
+        navigationController?.navigationBar.topItem?.leftBarButtonItem=UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backClicked))
+        
+        
+    }
+    
+    @objc func addButtonClicked(){
+        print("Tıklandı")
+    }
+    
+    @objc func backClicked(){
+        self.dismiss(animated: true, completion: nil)
     }
     
 
