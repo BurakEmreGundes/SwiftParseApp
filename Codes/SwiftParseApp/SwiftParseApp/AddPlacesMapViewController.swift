@@ -12,6 +12,8 @@ import CoreLocation
 class AddPlacesMapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
     var locationManager = CLLocationManager()
+    var choosenLatitude=""
+    var chosenLongitude=""
     @IBOutlet weak var mapView: MKMapView!
   
     override func viewDidLoad() {
@@ -31,7 +33,26 @@ class AddPlacesMapViewController: UIViewController,MKMapViewDelegate,CLLocationM
         navigationController?.navigationBar.topItem?.leftBarButtonItem=UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backClicked))
         
         
+        let mapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(chooseLocation(gestureRecognizer:)))
+        mapRecognizer.minimumPressDuration=3
+        mapView.addGestureRecognizer(mapRecognizer)
         
+        
+    }
+    @objc func chooseLocation(gestureRecognizer:UIGestureRecognizer){
+        if gestureRecognizer.state == UIGestureRecognizer.State.began{
+            let touches=gestureRecognizer.location(in: self.mapView)
+            let coordinates=self.mapView.convert(touches, toCoordinateFrom: self.mapView)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate=coordinates
+            annotation.title = PlaceModel.sharedInstance.placeName
+            annotation.subtitle=PlaceModel.sharedInstance.placeType
+            self.choosenLatitude=String(coordinates.latitude)
+            self.chosenLongitude=String(coordinates.longitude)
+            
+            self.mapView.addAnnotation(annotation)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

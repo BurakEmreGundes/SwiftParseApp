@@ -22,6 +22,8 @@ class AddPlacesViewController: UIViewController,UIImagePickerControllerDelegate,
         placeImage.isUserInteractionEnabled=true
             let imageRecognizer=UITapGestureRecognizer(target: self, action: #selector(selectImage))
         placeImage.addGestureRecognizer(imageRecognizer)
+                
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -43,7 +45,32 @@ class AddPlacesViewController: UIViewController,UIImagePickerControllerDelegate,
     
 
     @IBAction func saveButtonClicked(_ sender: Any) {
-        self.performSegue(withIdentifier: "toAddPlacesMapVC", sender: nil)
+        
+        if placeNameTextField.text != "" && placeTypeTextField.text != "" && placeAtmosphere.text != "" {
+            if placeImage.image != UIImage(named: "selectimage"){
+                let placeModel = PlaceModel.sharedInstance
+                placeModel.placeName=placeNameTextField.text!
+                placeModel.placeType=placeTypeTextField.text!
+                placeModel.placeAtmosphere=placeAtmosphere.text!
+                placeModel.placeImage=placeImage.image!
+                self.performSegue(withIdentifier: "toAddPlacesMapVC", sender: nil)
+            }else{
+                self.makeAlert(title: "Error", message: "Alanları Boş Bırakmayınız")
+            }
+        }
+        else{
+            self.makeAlert(title: "Error", message: "Alanları Boş Bırakmayınız")
+        }
+        
+       
+    }
+    
+    func makeAlert(title:String,message:String){
+        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okButton=UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert,animated: true,completion: nil)
+        
     }
         
         

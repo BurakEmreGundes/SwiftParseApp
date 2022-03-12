@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1BAA5427DC9DF30003A648 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BAA5327DC9DF30003A648 /* PlaceModel.swift */; };
 		4A72934427DB6593006D7D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72934327DB6593006D7D6F /* AppDelegate.swift */; };
 		4A72934627DB6593006D7D6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72934527DB6593006D7D6F /* SceneDelegate.swift */; };
 		4A72934827DB6593006D7D6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72934727DB6593006D7D6F /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		2C4409D2C2BA2D2924BF26C6 /* Pods-SwiftParseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftParseApp.release.xcconfig"; path = "Target Support Files/Pods-SwiftParseApp/Pods-SwiftParseApp.release.xcconfig"; sourceTree = "<group>"; };
+		4A1BAA5327DC9DF30003A648 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		4A72934027DB6593006D7D6F /* SwiftParseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftParseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A72934327DB6593006D7D6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A72934527DB6593006D7D6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				4A72935927DB7006006D7D6F /* AddPlacesViewController.swift */,
 				4A72935D27DB74C4006D7D6F /* AddPlacesMapViewController.swift */,
 				4A72936127DB7855006D7D6F /* PlacesDetailsViewController.swift */,
+				4A1BAA5327DC9DF30003A648 /* PlaceModel.swift */,
 			);
 			path = SwiftParseApp;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A72935A27DB7006006D7D6F /* AddPlacesViewController.swift in Sources */,
+				4A1BAA5427DC9DF30003A648 /* PlaceModel.swift in Sources */,
 				4A72935827DB6FC7006D7D6F /* PlacesViewController.swift in Sources */,
 				4A72935E27DB74C4006D7D6F /* AddPlacesMapViewController.swift in Sources */,
 				4A72934827DB6593006D7D6F /* ViewController.swift in Sources */,
