@@ -8,12 +8,12 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Parse
 
 class AddPlacesMapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
     var locationManager = CLLocationManager()
-    var choosenLatitude=""
-    var chosenLongitude=""
+
     @IBOutlet weak var mapView: MKMapView!
   
     override func viewDidLoad() {
@@ -48,8 +48,8 @@ class AddPlacesMapViewController: UIViewController,MKMapViewDelegate,CLLocationM
             annotation.coordinate=coordinates
             annotation.title = PlaceModel.sharedInstance.placeName
             annotation.subtitle=PlaceModel.sharedInstance.placeType
-            self.choosenLatitude=String(coordinates.latitude)
-            self.chosenLongitude=String(coordinates.longitude)
+            PlaceModel.sharedInstance.placeLatitude=String(coordinates.latitude)
+            PlaceModel.sharedInstance.placeLongitude=String(coordinates.longitude)
             
             self.mapView.addAnnotation(annotation)
         }
@@ -63,11 +63,37 @@ class AddPlacesMapViewController: UIViewController,MKMapViewDelegate,CLLocationM
     }
     
     @objc func addButtonClicked(){
-        print("Tıklandı")
+        let placeModel=PlaceModel.sharedInstance
+        let object=PFObject(className: "Places")
+        object["name"]=placeModel.placeName
+        object["type"]=placeModel.placeType
+        object["atmosphere"]=placeModel.placeAtmosphere
+        object["latitude"]=placeModel.placeLatitude
+        object["longitude"]=placeModel.placeLongitude
+        
+        if let imageData=placeModel.placeImage.jpegData(compressionQuality: 0.5){
+            object["image"] = PFFileObject(name:"image.jpg", data: imageData)
+        }
+        
+        object.saveInBackground { success, error in
+            if error != nil{
+                self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Hatalı İşlem")
+            }else{
+                self.performSegue(withIdentifier: "toPlacesListVCFromSave", sender: nil)
+            }
+        }
     }
     
     @objc func backClicked(){
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func makeAlert(title:String,message:String){
+        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okButton=UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert,animated: true,completion: nil)
+        
     }
     
 
