@@ -11,7 +11,10 @@ import Parse
 class PlacesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
    
     
-  
+
+    var placesNameArray=[String]()
+    var placesIdArray=[String]()
+    var selectedPlacesID:String=""
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -25,16 +28,31 @@ class PlacesViewController: UIViewController,UITableViewDelegate,UITableViewData
         navigationController?.navigationBar.topItem?.leftBarButtonItem=UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutClicked))
         
         
+        getDataFromParse()
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell=UITableViewCell()
-        cell.textLabel?.text="sea"
+        cell.textLabel?.text=placesNameArray[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return placesNameArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPlacesID=placesIdArray[indexPath.row]
+        performSegue(withIdentifier: "das", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == ""{
+            let destination=segue.destination as! PlacesDetailsViewController
+            destination.chosenPlacesID=selectedPlacesID
+        }
     }
     
     @objc func addButtonClicked(){
@@ -60,6 +78,30 @@ class PlacesViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.present(alert,animated: true,completion: nil)
         
     }
+    
+    func getDataFromParse(){
+        let query=PFQuery(className: "Places")
+        query.findObjectsInBackground { objects, error in
+            if error != nil{
+                self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Hatalı İşlem")
+            }else{
+                if objects != nil{
+                    for object in objects!{
+                        if let placeName=object.object(forKey: "name") as? String{
+                            self.placesNameArray.append(placeName)
+                        }
+                        if let placeID=object.objectId{
+                            self.placesIdArray.append(placeID)
+                        }
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+
+    
     
 
     /*

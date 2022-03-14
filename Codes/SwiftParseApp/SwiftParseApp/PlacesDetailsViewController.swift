@@ -6,14 +6,34 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class PlacesDetailsViewController: UIViewController {
-
+class PlacesDetailsViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    var chosenPlacesID:String=""
+    @IBOutlet weak var placeNameLabel: UILabel!
+    @IBOutlet weak var placeTypeLabel: UILabel!
+    @IBOutlet weak var placeAtmosphereLabel: UILabel!
+    
+    var locationManager=CLLocationManager()
+    
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate=self
+        mapView.delegate=self
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    func getPlace(){
+        
+    }
+
     
 
     /*
