@@ -45,11 +45,11 @@ class PlacesViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPlacesID=placesIdArray[indexPath.row]
-        performSegue(withIdentifier: "das", sender: nil)
+        performSegue(withIdentifier: "toPlacesDetailsVC", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == ""{
+        if segue.identifier == "toPlacesDetailsVC"{
             let destination=segue.destination as! PlacesDetailsViewController
             destination.chosenPlacesID=selectedPlacesID
         }
